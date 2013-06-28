@@ -81,7 +81,8 @@ void moveDoor(int state) {
    digitalWrite(ENABLE, HIGH);
 
    delay(1000); // First inductive spike.
-   float current;
+   
+   int current;
    do {
       current = measureCurrent();
       
@@ -96,14 +97,14 @@ void moveDoor(int state) {
    } while(duration < 8000);
 
    Serial.print("The current was ");
-   Serial.print(current, DEC);
+   Serial.println(current, DEC);
    
    digitalWrite(ENABLE, LOW);
 
    Serial.print("The door was moved to ");
    Serial.print(state, DEC);
    Serial.print(" in ");
-   Serial.print(duration / 1000., DEC);
+   Serial.print(duration / 1000., 3);
    Serial.println("s");
 }
 
